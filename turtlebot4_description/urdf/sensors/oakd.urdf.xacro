@@ -121,12 +121,12 @@
 
   <!-- Gazebo links and joints -->
   <gazebo reference="${name}_rgb_camera_frame">
-    <sensor name="rgbd_camera" type="rgbd_camera">
+    <sensor name="rgb_camera" type="camera">
       <camera>
         <horizontal_fov>1.25</horizontal_fov>
         <image>
-          <width>320</width>
-          <height>240</height>
+          <width>1280</width>
+          <height>720</height>
         </image>
         <clip>
           <near>0.3</near>
@@ -135,7 +135,8 @@
         <optical_frame_id>${name}_rgb_camera_optical_frame</optical_frame_id>
       </camera>
       <always_on>1</always_on>
-      <update_rate>30</update_rate>
+      <!-- Reduced from 30 to 5 fps and changed to camera (RGB only) to limit llvmpipe CPU load -->
+      <update_rate>5</update_rate>
       <visualize>true</visualize>
     </sensor>
     <xacro:material_darkgray/>
